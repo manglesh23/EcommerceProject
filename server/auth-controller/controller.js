@@ -1,4 +1,5 @@
 // const { consumers } = require("nodemailer/lib/xoauth2");
+require('dotenv').config();
 const axios = require("axios");
 const jwt = require("jsonwebtoken");
 const {
@@ -191,9 +192,9 @@ const updatePassword = async (req, res) => {
 const sendSMS = async (req, res) => {
   const { to, text } = req.body;
 
-  const accountSid = "ACa993e6ebf7df010fa33c11072e9de372";
-  const authToken = "7d811285ebe53fdc01a0e335a40f3450";
-  const twilioPhoneNumber = "+18479614889";
+  const accountSid = process.env.ACCOUT_SID;
+  const authToken = process.env.AUTH_TOKEN_FOR_TIWILIO;
+  const twilioPhoneNumber = process.env.TIWILIO_PHONE;
   const client = twilio(accountSid, authToken);
 
   try {
